@@ -1,0 +1,40 @@
+<template>
+  <!-- Only one root node is allowed in template. -->
+  <div class="container">
+    <text class="title">SubPage</text>
+  </div>
+</template>
+
+<style>
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 100px;
+  }
+</style>
+
+<script>
+
+  export default {
+    data: {
+      componentData: {},
+    },
+    onInit() {
+      this.$page.setTitleBar({
+        text: 'menu',
+        textColor: '#ffffff',
+        backgroundColor: '#007DFF',
+        backgroundOpacity: 0.5,
+        menu: true
+      });
+
+      console.log("this.gt_payload = " + this.gt_payload);
+
+      console.log("this.name = " + this.name);
+    }
+  }
+</script>

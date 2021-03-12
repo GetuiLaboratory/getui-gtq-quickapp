@@ -1,0 +1,134 @@
+<template>
+  <!-- Only one root node is allowed in template. -->
+  <div class="container">
+    <div style="margin-top: 20px">
+      <input class="button" type="button" onclick="setDebugMode(true)" value="Open DebugMode"/>
+      <input class="button" type="button" onclick="setDebugMode(false)" value="Close DebugMode"/>
+    </div>
+    <div style="margin-top: 20px">
+      <input class="button" type="button" onclick="doInit" value="Do init"/>
+      <input class="button" type="button" onclick="doSubscribe" value="Do subscribe"/>
+      <input class="button" type="button" onclick="doUnsubscribe" value="Do unsubscribe"/>
+    </div>
+    <div style="margin-top: 20px;">
+      <input class="button" type="button" onclick="goSubPage()" value="Go SubPage"/>
+      <input class="button" type="button" onclick="clearLog()" value="Clear Log"/>
+    </div>
+    <div class = "log" style="margin-top:20px;border: 1px solid #000000;">
+      <textarea focusable="false" style="lines:20;" id="logContainer">{{logData}}</textarea>
+    </div>
+    
+  </div>
+</template>
+
+<style>
+  .container {
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+  }
+
+  .title {
+    font-size: 100px;
+  }
+
+  .button {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .log {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+</style>
+
+<script>
+  import router from '@system.router'
+  import GtPush from '../gtq-1.0.0.js'
+  
+
+  export default {
+
+    data: {
+      componentData: {},
+      cid: "123123",
+      token: "123123",
+      gtRegId: "123123",
+      deviceToken: "123123",
+      logData: ''
+    },
+
+    setDebugMode(enable) {
+      GtPush.setDebugMode(enable)
+    },
+
+    doInit() {
+      GtPush.init({
+        // appid: "kHx67S8jWU6BBDTAFj9BjA",
+        // appid: "s3olXQVg1d5mwSaZ2Oz642",
+        appid: "kHx67S8jWU6BBDTAFj9BjA",
+        success: (data) => {
+          console.log(`init success, cid: ${data.cid}`)
+        },
+        fail: (code, msg) => {
+          console.log(`init fail, code: ${code}, msg: ${msg}`)
+        }
+      })
+    },
+    
+    doSubscribe() {
+      GtPush.subscribe({
+        callback: (data) => {
+          console.log(`receive msg, msgId: ${data.msgId}, data: ${data.data}`)
+        }
+      })
+    },
+
+    doUnsubscribe() {
+      GtPush.unsubscribe()
+    },
+
+    clearLog() {
+      this.logData = ''
+    },
+
+    goSubPage() {
+      router.push({
+        uri: '/Hello/SubPage',
+        params: {},
+        success: function () {
+          console.log('router success .');
+        },
+        fail: function (error) {
+          console.log('router fail :' + error.message);
+        },
+        complete: function () {
+          console.log('router complete.');
+        }
+      })
+    },
+    onInit() {
+      GtPush.setLogListener((message) => {
+        if(this.logData){
+          this.logData = this.logData + '\n'
+        }
+        this.logData = this.logData + message
+      })
+
+      this.$page.setTitleBar({
+        text: 'menu',
+        textColor: '#ffffff',
+        backgroundColor: '#007DFF',
+        backgroundOpacity: 0.5,
+        menu: true
+      });
+    }
+  }
+</script>

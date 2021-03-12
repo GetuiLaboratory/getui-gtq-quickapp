@@ -1,0 +1,22 @@
+<!-- 子tab 参数包含：标题和激活时的颜色 -->
+<import name="subtab" src="./c_sub_tab.ux"></import>
+<template>
+  <subtab datas="{{datas}}"></subtab>
+</template>
+
+<script>
+  module.exports = {
+    data() {
+      return {
+        datas: {
+          color_normal: '#1A1A1A',
+          color_active: '#CD2325',
+          list: [
+            { title: '男生', show_line: false, color: '#1A1A1A' },
+            { title: '女生', show_line: false, color: '#1A1A1A' }
+          ]
+        }
+      }
+    }
+  }
+</script>

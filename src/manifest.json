@@ -1,0 +1,65 @@
+{
+  "package": "com.quickapp.example",
+  "name": "TestQuickApp",
+  "versionName": "1.0.0",
+  "versionCode": 1,
+  "icon": "/Common/logo.png",
+  "minPlatformVersion": 1060,
+  "features": [
+    {
+      "name": "system.network"
+    },
+    {
+      "name": "system.device"
+    },
+    {
+      "name": "system.fetch"
+    },
+    {
+      "name": "system.storage"
+    },
+    {
+      "name": "system.app"
+    },
+    {
+      "name": "system.cipher"
+    },
+    {
+      "name": "service.push"
+    }
+  ],
+  "permissions": [
+    {
+      "origin": "*"
+    }
+  ],
+  "config": {
+    "logLevel": "debug",
+    "data": {
+        "back": "false"
+    },
+    "background": {
+        "features": [
+            "system.audio"
+        ]
+    }
+},
+  "router": {
+    "entry": "Hello",
+    "pages": {
+      "Hello": {
+        "component": "hello"
+      },
+      "Hello/SubPage": {
+        "component": "subpage"
+      } 
+    }
+  },
+  "display": {
+    "pages": {
+      "Hello": {
+        "titleBarText": "TitleBar"
+      }
+    }
+  }
+}

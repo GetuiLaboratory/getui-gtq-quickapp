@@ -1,0 +1,22 @@
+{
+  "name": "getui-gtsdk-quickapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "fa-build": "node node_modules/webpack/bin/webpack.js --config ./node_modules/fa-toolkit/webpack.config.js",
+    "fa-watch": "node node_modules/webpack/bin/webpack.js --watch --config ./node_modules/fa-toolkit/webpack.config.js",
+    "fa-release": "node ./node_modules/cross-env/src/bin/cross-env.js uglifyjs=true sign=release node_modules/webpack/bin/webpack.js --config ./node_modules/fa-toolkit/webpack.config.js"
+  },
+  "author": "getui-isg-gongw",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "fa-toolkit": "file:fa-toolkit-2.6.1-Stable.300.tgz"
+  },
+  "browserslist": [
+    "chrome 65"
+  ]
+}
