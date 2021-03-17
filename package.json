@@ -1,5 +1,5 @@
 {
-  "name": "getui-gtsdk-quickapp",
+  "name": "getui-example-quickapp",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,6 +14,7 @@
   "dependencies": {},
   "devDependencies": {
     "cross-env": "^7.0.2",
+    "@types/quickapp": "git+https://github.com/vivoquickapp/quickapp-types.git",
     "fa-toolkit": "file:fa-toolkit-2.6.1-Stable.300.tgz"
   },
   "browserslist": [

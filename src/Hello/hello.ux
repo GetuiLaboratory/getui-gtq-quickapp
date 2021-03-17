@@ -51,7 +51,7 @@
 
 <script>
   import router from '@system.router'
-  import GtPush from '../gtq-1.0.0.js'
+  import GtPush from '../GTQ-1.0.0-MIN'
   
 
   export default {
